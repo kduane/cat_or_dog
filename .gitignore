@@ -348,3 +348,11 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+#jupyterlab checkpoints
+.ipynb_checkpoints/
+.ipynb_checkpoints/*
+
+#raw data folder (for github space)
+/data/*
+/data/
