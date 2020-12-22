@@ -39,8 +39,12 @@ While identifying which pet is at my feet is an easy task for me as a human, it 
 
 ## Credits/References/Acknowledgements
 
-Dataset Reference
+Dataset Reference:
 
 Aditya Khosla, Nityananda Jayadevaprakash, Bangpeng Yao and Li Fei-Fei. Novel dataset for Fine-Grained Image Categorization. First Workshop on Fine-Grained Visual Categorization (FGVC), IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2011.
 
 Joseph Redmon and Santosh Divvala and Ross Girshick and Ali Farhadi, You Only Look Once: Unified, Real-Time Object Detection, 2016
+
+Code Inspiration:
+
+Anmol Behl, Video Streaming Using Flask and Open CV, https://medium.com/datadriveninvestor/video-streaming-using-flask-and-opencv-c464bf8473d6
