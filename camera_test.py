@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 import cv2
 from tensorflow import keras
-
+from tensorflow.keras.models import load_model
 
 #labeling data: 
 labels_dict = { 0 : 'dog', 1 : 'cat'}
@@ -13,7 +13,11 @@ size = 4
 webcam = cv2.VideoCapture(0)
 
 # load xml file
-classifier = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalcatface.xml") #assuming cat face cascade will show dog faces, too
+classifier = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalcatface.xml") 
+#assuming cat face cascade will show dog faces, too
+
+#load cnn model
+cnn = load_model('model')
 
 while True:
     (rval, im) = webcam.read()
