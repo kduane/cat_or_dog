@@ -58,6 +58,10 @@ X = X.astype('float32')
 y = utils.to_categorical(y, 2)
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = 9)
 
+#normalize inputs
+X_train = X_train / 255
+X_test = X_test / 255
+ 
 cnn = Sequential()
 # Starting Layer
 cnn.add(Conv2D(filters = 128,
@@ -113,5 +117,7 @@ res = cnn.fit(X_train, y_train,
              epochs = 30,
              callbacks = [early_stop],
              verbose = 1)
+
+scores = cnn.evaluate(X_test, y_test, verbose = 1)
 
 cnn.save('./model')
