@@ -13,21 +13,35 @@ size = 4
 webcam = cv2.VideoCapture(0)
 
 # load xml file
-classifier = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalcatface.xml") 
+cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalcatface.xml") 
 #assuming cat face cascade will show dog faces, too
 
 #load cnn model
 cnn = load_model('model')
+
+# while True:
+#     ret, frame = webcam.read()
+#     img = cv2.flip(frame, 1)
+#     face = cascade.detectMultiScale(img, 1.3, 5)
+#     for (x, y, w, h) in face:
+#         cv2.rectangle(img, (x,y), (x+w, y+h), (0, 128,0), 2)
+#     cv2.imshow('image', img)
+#     k = cv2.waitKey(1)
+#     if k%256 == 27:
+#         break
+
+# cam.release()
+# cv2.DestroyAllWindows
 
 while True:
     (rval, im) = webcam.read()
     im = cv2.flip(im, 1, 1) #to mirror the image
 
     #resize for speed
-    mini = cv2.resize(im, (im.shape[1] // size, im.shape[0] // size))
-
+    mini = cv2.resize(im, (im.shape[1] // size, im.shape[0] // size))  
+    
     #detect Multiscale
-    faces = classifier.detectMultiScale(mini)
+    faces = cascade.detectMultiScale(mini)
 
     #draw rectangle around cat face
     for f in faces:
@@ -49,7 +63,7 @@ while True:
     
     #display the image
     cv2.imshow('LIVE', im)
-    key = cv2.waitKey(10)
+    key = cv2.waitKey(0)
 
     #break out of loop on pressing escape key
     if key == 27:
